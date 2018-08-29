@@ -20,3 +20,11 @@ I had problems doing a simple `rbenv install 2.5.1` but I found that this versio
 RUBY_CONFIGURE_OPTS="--disable-dtrace" rbenv install -v 2.5.1
 ```
 I only have access to the system ruby and cannot install gems because of permissions. Not Happy.
+Went to the cucumber-cpp project that I had cloned. Added a .ruby-version file and placed "2.5.1" in it.
+
+```
+gem install bundler
+bundle install
+## aruba has a long message that I do not understand
+```
+
