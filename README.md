@@ -2,6 +2,13 @@
 This project uses the book The Ray Tracer Challenge by Jamis Buck as the basis for this code.
 
 ## set up the workspace
+After starting to set up my Mac with cucumber-cpp, I decided against it. The dependencies needed (e.g. Boost, Ruby and more) and my
+familiarity with gtest/gmock, prompted me to get going with gtest/gmock. Maybe in the future I'll retry this project with Cucumber.
+For now (20180901) I just want to get started with the project.
+
+## Old comments
+
+*Pre-September 1, 2018*
 This project will use Cucumber so that I can use the tests provided in the book. I plan to write the code using Qt Creator with C++ and the Qt Framework when appropriate.
 
 ### Ruby
