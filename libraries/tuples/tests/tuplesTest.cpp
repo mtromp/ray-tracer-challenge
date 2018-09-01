@@ -13,6 +13,7 @@ protected:
                   ,wVector(0.0)
                   ,delta(0.00001)
                   ,aPoint(expectedX,expectedY,expectedZ,wPoint)
+                  ,aVector(expectedX,expectedY,expectedZ,wVector)
     {
 
     }
@@ -20,6 +21,7 @@ protected:
 
     float expectedX, expectedY, expectedZ, wPoint, wVector, delta;
     tuples aPoint;
+    tuples aVector;
 };
 
 TEST_F(TuplesTest, PointTupleHasExpectedX)
@@ -45,4 +47,29 @@ TEST_F(TuplesTest, PointTupleIsAPoint)
 TEST_F(TuplesTest, PointTupleIsNotAVector)
 {
     EXPECT_FALSE(aPoint.isVector());
+}
+// Vector tests
+TEST_F(TuplesTest, VectorTupleHasExpectedX)
+{
+    EXPECT_NEAR(expectedX, aVector.xAxis(), delta);
+}
+TEST_F(TuplesTest, VectorTupleHasExpectedY)
+{
+    EXPECT_NEAR(expectedY, aVector.yAxis(), delta);
+}
+TEST_F(TuplesTest, VectorTupleHasExpectedZ)
+{
+    EXPECT_NEAR(expectedZ, aVector.zAxis(), delta);
+}
+TEST_F(TuplesTest, VectorTupleHasExpectedW)
+{
+    EXPECT_NEAR(wVector, aVector.wAxis(), delta);
+}
+TEST_F(TuplesTest, VectorTupleIsNotAPoint)
+{
+    EXPECT_FALSE(aVector.isPoint());
+}
+TEST_F(TuplesTest, VectorTupleIsAVector)
+{
+    EXPECT_TRUE(aVector.isVector());
 }
