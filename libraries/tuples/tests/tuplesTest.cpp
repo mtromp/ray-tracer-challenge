@@ -1,4 +1,7 @@
 #include "tuples.h"
+#include "point.h"
+#include "vector.h"
+
 #include <gtest/gtest.h>
 
 using namespace testing;
@@ -72,4 +75,16 @@ TEST_F(TuplesTest, VectorTupleIsNotAPoint)
 TEST_F(TuplesTest, VectorTupleIsAVector)
 {
     EXPECT_TRUE(aVector.isVector());
+}
+TEST_F(TuplesTest, PointCreatesAPoint)
+{
+    point p(expectedX, expectedY, expectedZ);
+    EXPECT_TRUE(p.isPoint());
+    EXPECT_NEAR(wPoint, p.wAxis(), delta);
+}
+TEST_F(TuplesTest, VectorCreatesAVector)
+{
+    vector v(expectedX, expectedY, expectedZ);
+    EXPECT_TRUE(v.isVector());
+    EXPECT_NEAR(wVector, v.wAxis(), delta);
 }

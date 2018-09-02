@@ -8,11 +8,15 @@ INCLUDE_DIRECTORIES( ${INCLUDE_DIRS} )
 # ##########################################
 SET( INCLUDE_FILES
         include/tuples.h
+        include/point.h
+        include/vector.h
 )
 
 # ##########################################
 SET( SOURCE_FILES
         src/tuples.cpp
+        src/point.cpp
+        src/vector.cpp
 )
 
 # ##########################################
