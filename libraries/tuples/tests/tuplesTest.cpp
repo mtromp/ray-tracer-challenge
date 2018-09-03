@@ -88,3 +88,11 @@ TEST_F(TuplesTest, VectorCreatesAVector)
     EXPECT_TRUE(v.isVector());
     EXPECT_NEAR(wVector, v.wAxis(), delta);
 }
+TEST_F(TuplesTest, ComparingTupleToItselfYieldsEqual)
+{
+    EXPECT_TRUE(aPoint == aPoint);
+}
+TEST_F(TuplesTest, ComparingTupleToOtherYieldsNotEqual)
+{
+    EXPECT_FALSE(aPoint == aVector);
+}
