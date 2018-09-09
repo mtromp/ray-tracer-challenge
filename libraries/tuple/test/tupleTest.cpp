@@ -1,15 +1,16 @@
-#include "tuples.h"
+#include "tuple.h"
 #include "point.h"
 #include "vector.h"
 
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 using namespace testing;
 
-class TuplesTest : public Test
+class TupleTest : public Test
 {
 protected:
-    TuplesTest() : expectedX(4.3)
+    TupleTest() : expectedX(4.3)
                   ,expectedY(-4.2)
                   ,expectedZ(3.1)
                   ,wPoint(1.0)
@@ -20,79 +21,79 @@ protected:
     {
 
     }
-    ~TuplesTest() {}
+    ~TupleTest() {}
 
     float expectedX, expectedY, expectedZ, wPoint, wVector, delta;
-    tuples aPoint;
-    tuples aVector;
+    raytracer::tuple aPoint;
+    raytracer::tuple aVector;
 };
 
-TEST_F(TuplesTest, PointTupleHasExpectedX)
+TEST_F(TupleTest, PointTupleHasExpectedX)
 {
     EXPECT_NEAR(expectedX, aPoint.xAxis(), delta);
 }
-TEST_F(TuplesTest, PointTupleHasExpectedY)
+TEST_F(TupleTest, PointTupleHasExpectedY)
 {
     EXPECT_NEAR(expectedY, aPoint.yAxis(), delta);
 }
-TEST_F(TuplesTest, PointTupleHasExpectedZ)
+TEST_F(TupleTest, PointTupleHasExpectedZ)
 {
     EXPECT_NEAR(expectedZ, aPoint.zAxis(), delta);
 }
-TEST_F(TuplesTest, PointTupleHasExpectedW)
+TEST_F(TupleTest, PointTupleHasExpectedW)
 {
     EXPECT_NEAR(wPoint, aPoint.wAxis(), delta);
 }
-TEST_F(TuplesTest, PointTupleIsAPoint)
+TEST_F(TupleTest, PointTupleIsAPoint)
 {
     EXPECT_TRUE(aPoint.isPoint());
 }
-TEST_F(TuplesTest, PointTupleIsNotAVector)
+TEST_F(TupleTest, PointTupleIsNotAVector)
 {
     EXPECT_FALSE(aPoint.isVector());
 }
 // Vector tests
-TEST_F(TuplesTest, VectorTupleHasExpectedX)
+TEST_F(TupleTest, VectorTupleHasExpectedX)
 {
     EXPECT_NEAR(expectedX, aVector.xAxis(), delta);
 }
-TEST_F(TuplesTest, VectorTupleHasExpectedY)
+TEST_F(TupleTest, VectorTupleHasExpectedY)
 {
     EXPECT_NEAR(expectedY, aVector.yAxis(), delta);
 }
-TEST_F(TuplesTest, VectorTupleHasExpectedZ)
+TEST_F(TupleTest, VectorTupleHasExpectedZ)
 {
     EXPECT_NEAR(expectedZ, aVector.zAxis(), delta);
 }
-TEST_F(TuplesTest, VectorTupleHasExpectedW)
+TEST_F(TupleTest, VectorTupleHasExpectedW)
 {
     EXPECT_NEAR(wVector, aVector.wAxis(), delta);
 }
-TEST_F(TuplesTest, VectorTupleIsNotAPoint)
+TEST_F(TupleTest, VectorTupleIsNotAPoint)
 {
     EXPECT_FALSE(aVector.isPoint());
 }
-TEST_F(TuplesTest, VectorTupleIsAVector)
+TEST_F(TupleTest, VectorTupleIsAVector)
 {
     EXPECT_TRUE(aVector.isVector());
 }
-TEST_F(TuplesTest, PointCreatesAPoint)
+TEST_F(TupleTest, PointCreatesAPoint)
 {
-    point p(expectedX, expectedY, expectedZ);
+    raytracer::point p(expectedX, expectedY, expectedZ);
     EXPECT_TRUE(p.isPoint());
     EXPECT_NEAR(wPoint, p.wAxis(), delta);
 }
-TEST_F(TuplesTest, VectorCreatesAVector)
+TEST_F(TupleTest, VectorCreatesAVector)
 {
-    vector v(expectedX, expectedY, expectedZ);
+    raytracer::vector v(expectedX, expectedY, expectedZ);
     EXPECT_TRUE(v.isVector());
     EXPECT_NEAR(wVector, v.wAxis(), delta);
 }
-TEST_F(TuplesTest, ComparingTupleToItselfYieldsEqual)
+TEST_F(TupleTest, ComparingTupleToItselfYieldsEqual)
 {
     EXPECT_TRUE(aPoint == aPoint);
 }
-TEST_F(TuplesTest, ComparingTupleToOtherYieldsNotEqual)
+TEST_F(TupleTest, ComparingTupleToOtherYieldsNotEqual)
 {
     EXPECT_FALSE(aPoint == aVector);
 }

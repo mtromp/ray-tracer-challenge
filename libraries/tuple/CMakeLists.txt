@@ -7,20 +7,20 @@ INCLUDE_DIRECTORIES( ${INCLUDE_DIRS} )
 
 # ##########################################
 SET( INCLUDE_FILES
-        include/tuples.h
+        include/tuple.h
         include/point.h
         include/vector.h
 )
 
 # ##########################################
 SET( SOURCE_FILES
-        src/tuples.cpp
+        src/tuple.cpp
         src/point.cpp
         src/vector.cpp
 )
 
 # ##########################################
-ADD_LIBRARY( tuples
+ADD_LIBRARY( tuple
         SHARED
         ${INCLUDE_FILES}
         ${SOURCE_FILES}
@@ -29,19 +29,20 @@ ADD_LIBRARY( tuples
 # ##########################################
 # enable unit test building and running
 
-ADD_EXECUTABLE( tuplesTests
-        tests/main.cpp
-        tests/tuplesTest.cpp
+ADD_EXECUTABLE( tupleTests
+        test/main.cpp
+        test/tupleTest.cpp
+        test/tupleMathTest.cpp
 )
-TARGET_LINK_LIBRARIES( tuplesTests
-        tuples
+TARGET_LINK_LIBRARIES( tupleTests
+        tuple
         gmock
 )
 
 ADD_TEST( NAME
-        tuplesTests
+        tupleTests
         COMMAND
-        tuplesTests
+        tupleTests
 )
 
 

@@ -1,39 +1,41 @@
-#include "tuples.h"
+#include "tuple.h"
 
 #include <cmath>
 
-tuples::tuples(float xVal, float yVal, float zVal, float wVal) : x(xVal), y(yVal),z(zVal),w(wVal)
+using namespace raytracer;
+
+tuple::tuple(float xVal, float yVal, float zVal, float wVal) : x(xVal), y(yVal),z(zVal),w(wVal)
 {
 
 }
-float tuples::xAxis() const
+float tuple::xAxis() const
 {
     return this->x;
 }
-float tuples::yAxis() const
+float tuple::yAxis() const
 {
     return this->y;
 }
-float tuples::zAxis() const
+float tuple::zAxis() const
 {
     return this->z;
 }
-float tuples::wAxis() const
+float tuple::wAxis() const
 {
     return this->w;
 }
 
-bool tuples::isPoint()
+bool tuple::isPoint()
 {
     return (this->w > 0.0);
 }
 
-bool tuples::isVector()
+bool tuple::isVector()
 {
     return (this->w < 1.0);
 }
 
-bool tuples::operator==(const tuples &rhs)
+bool tuple::operator==(const tuple &rhs)
 {
     if (! equal(this->wAxis(),rhs.wAxis()))
     {
@@ -55,7 +57,17 @@ bool tuples::operator==(const tuples &rhs)
     return true;
 }
 
-bool tuples::equal(const float a, const float b)
+tuple tuple::operator+(const tuple &rhs)
+{
+    return tuple(this->x + rhs.x, this->y + rhs.y, this->z + rhs.z, this->w + rhs.w);
+}
+
+tuple tuple::operator-(const tuple& rhs)
+{
+    return tuple(this->x - rhs.x, this->y - rhs.y, this->z - rhs.z, this->w - rhs.w);
+}
+
+bool tuple::equal(const float a, const float b)
 {
     const float epsilon = 0.00001;
     if ( abs(a - b) < epsilon)
