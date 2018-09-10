@@ -17,9 +17,10 @@ public:
 
     virtual bool operator==(const tuple& rhs);
     virtual tuple operator+(const tuple& rhs);
-    virtual tuple operator-(const tuple& rhs);
 
 protected:
+    virtual tuple operator-(const tuple& rhs);
+
     bool equal(const float a, const float b);
     float x, y, z, w;
 };

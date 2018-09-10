@@ -37,24 +37,10 @@ bool tuple::isVector()
 
 bool tuple::operator==(const tuple &rhs)
 {
-    if (! equal(this->wAxis(),rhs.wAxis()))
-    {
-        return false;
-    }
-    if (! equal(this->xAxis(),rhs.xAxis()))
-    {
-        return false;
-    }
-    if (! equal(this->yAxis(),rhs.yAxis()))
-    {
-        return false;
-    }
-    if (! equal(this->zAxis(),rhs.zAxis()))
-    {
-        return false;
-    }
-
-    return true;
+    return equal(this->wAxis(),rhs.wAxis())
+            && equal(this->xAxis(),rhs.xAxis())
+            && equal(this->yAxis(),rhs.yAxis())
+            && equal(this->zAxis(),rhs.zAxis());
 }
 
 tuple tuple::operator+(const tuple &rhs)
