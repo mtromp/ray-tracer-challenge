@@ -62,3 +62,30 @@ TEST(TupleMath, NegateTuple)
 
     EXPECT_TRUE(expected == -a);
 }
+
+TEST(TupleMath, MultiplyTupleByScalar)
+{
+    raytracer::tuple expected(3.5, -7, 10.5, -14);
+
+    raytracer::tuple a(1, -2, 3, -4);
+
+    EXPECT_TRUE(expected == (a * 3.5));
+}
+
+TEST(TupleMath, MultiplyTupleByFraction)
+{
+    raytracer::tuple expected(0.5, -1, 1.5, -2);
+
+    raytracer::tuple a(1, -2, 3, -4);
+
+    EXPECT_TRUE(expected == (a * 0.5));
+}
+
+TEST(TupleMath, DivideTupleByScalar)
+{
+    raytracer::tuple expected(0.5, -1, 1.5, -2);
+
+    raytracer::tuple a(1, -2, 3, -4);
+
+    EXPECT_TRUE(expected == (a / 2.0));
+}

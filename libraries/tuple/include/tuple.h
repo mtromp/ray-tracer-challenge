@@ -16,6 +16,8 @@ public:
 
     tuple operator-(const tuple& rhs) const;
     tuple operator-() const;
+    tuple operator*(float value) const;
+    tuple operator/(float value) const;
 
     float x, y, z, w;
 

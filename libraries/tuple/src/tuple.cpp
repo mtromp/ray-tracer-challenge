@@ -42,6 +42,16 @@ tuple tuple::operator-() const
     return tuple(-this->x, -this->y, -this->z, -this->w);
 }
 
+tuple tuple::operator*(float value) const
+{
+    return tuple(this->x * value, this->y * value, this->z * value, this->w * value);
+}
+
+tuple tuple::operator/(float value) const
+{
+    return tuple(this->x / value, this->y / value, this->z / value, this->w / value);
+}
+
 bool tuple::equal(const float a, const float b) const
 {
     const float epsilon = 0.00001;
