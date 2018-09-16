@@ -1,13 +1,37 @@
 #include "point.h"
+#include "vector.h"
 
 using namespace raytracer;
 
-point::point(float xVal, float yVal, float zVal) : tuple(xVal,yVal,zVal,1.0)
+point::point(float xVal, float yVal, float zVal)
+            : innerTuple(xVal,yVal,zVal,1.0)
 {
 }
 
-vector point::operator-(const point& rhs)
+const tuple& point::getTuple() const
 {
-    return vector(this->x - rhs.x, this->y - rhs.y, this->z - rhs.z);
+    return innerTuple;
+}
+
+bool point::operator==(const point &rhs) const
+{
+    return (this->innerTuple == rhs.innerTuple);
+}
+
+vector* point::operator-(const point& rhsPoint) const
+{
+    return new vector(this->innerTuple.x - rhsPoint.innerTuple.x
+                      , this->innerTuple.y - rhsPoint.innerTuple.y
+                      , this->innerTuple.z - rhsPoint.innerTuple.z
+                     );
+}
+
+point* point::operator-(const vector& rhsVector) const
+{
+    tuple tmp = rhsVector.getTuple();
+    return new point(this->innerTuple.x - tmp.x
+                      , this->innerTuple.y - tmp.y
+                      , this->innerTuple.z - tmp.z
+                     );
 }
 

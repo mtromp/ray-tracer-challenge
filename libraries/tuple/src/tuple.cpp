@@ -8,22 +8,6 @@ tuple::tuple(float xVal, float yVal, float zVal, float wVal) : x(xVal), y(yVal),
 {
 
 }
-float tuple::xAxis() const
-{
-    return this->x;
-}
-float tuple::yAxis() const
-{
-    return this->y;
-}
-float tuple::zAxis() const
-{
-    return this->z;
-}
-float tuple::wAxis() const
-{
-    return this->w;
-}
 
 bool tuple::isPoint()
 {
@@ -35,25 +19,25 @@ bool tuple::isVector()
     return (this->w < 1.0);
 }
 
-bool tuple::operator==(const tuple &rhs)
+bool tuple::operator==(const tuple &rhs) const
 {
-    return equal(this->wAxis(),rhs.wAxis())
-            && equal(this->xAxis(),rhs.xAxis())
-            && equal(this->yAxis(),rhs.yAxis())
-            && equal(this->zAxis(),rhs.zAxis());
+    return equal(this->w,rhs.w)
+            && equal(this->x,rhs.x)
+            && equal(this->y,rhs.y)
+            && equal(this->z,rhs.z);
 }
 
-tuple tuple::operator+(const tuple &rhs)
+tuple* tuple::operator+(const tuple &rhs)
 {
-    return tuple(this->x + rhs.x, this->y + rhs.y, this->z + rhs.z, this->w + rhs.w);
+    return new tuple(this->x + rhs.x, this->y + rhs.y, this->z + rhs.z, this->w + rhs.w);
 }
 
-tuple tuple::operator-(const tuple& rhs)
+tuple* tuple::operator-(const tuple& rhs)
 {
-    return tuple(this->x - rhs.x, this->y - rhs.y, this->z - rhs.z, this->w - rhs.w);
+    return new tuple(this->x - rhs.x, this->y - rhs.y, this->z - rhs.z, this->w - rhs.w);
 }
 
-bool tuple::equal(const float a, const float b)
+bool tuple::equal(const float a, const float b) const
 {
     const float epsilon = 0.00001;
     if ( abs(a - b) < epsilon)

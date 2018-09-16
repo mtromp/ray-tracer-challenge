@@ -5,10 +5,19 @@
 
 namespace raytracer
 {
-class vector : public tuple
+class point;
+class vector
 {
 public:
     vector(float xVal, float yVal, float zVal);
+
+    const tuple& getTuple() const;
+
+    bool operator==(const vector& rhs) const;
+    point* operator-(const point &rhs) const;
+
+private:
+    tuple innerTuple;
 
 };
 }

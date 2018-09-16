@@ -2,16 +2,25 @@
 #define POINT_H
 
 #include "tuple.h"
-#include "vector.h"
 
 namespace raytracer
 {
-class point : public tuple
+class vector;
+
+class point
 {
 public:
     point(float xVal, float yVal, float zVal);
 
-    vector operator-(const point &rhs);
+    const tuple& getTuple() const;
+
+    bool operator==(const point& rhs) const;
+    vector* operator-(const point &rhsPoint) const;
+    point* operator-(const vector &rhsVector) const;
+
+
+private:
+    tuple innerTuple;
 
 };
 }

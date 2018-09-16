@@ -30,19 +30,19 @@ protected:
 
 TEST_F(TupleTest, PointTupleHasExpectedX)
 {
-    EXPECT_NEAR(expectedX, aPoint.xAxis(), delta);
+    EXPECT_NEAR(expectedX, aPoint.x, delta);
 }
 TEST_F(TupleTest, PointTupleHasExpectedY)
 {
-    EXPECT_NEAR(expectedY, aPoint.yAxis(), delta);
+    EXPECT_NEAR(expectedY, aPoint.y, delta);
 }
 TEST_F(TupleTest, PointTupleHasExpectedZ)
 {
-    EXPECT_NEAR(expectedZ, aPoint.zAxis(), delta);
+    EXPECT_NEAR(expectedZ, aPoint.z, delta);
 }
 TEST_F(TupleTest, PointTupleHasExpectedW)
 {
-    EXPECT_NEAR(wPoint, aPoint.wAxis(), delta);
+    EXPECT_NEAR(wPoint, aPoint.w, delta);
 }
 TEST_F(TupleTest, PointTupleIsAPoint)
 {
@@ -55,19 +55,19 @@ TEST_F(TupleTest, PointTupleIsNotAVector)
 // Vector tests
 TEST_F(TupleTest, VectorTupleHasExpectedX)
 {
-    EXPECT_NEAR(expectedX, aVector.xAxis(), delta);
+    EXPECT_NEAR(expectedX, aVector.x, delta);
 }
 TEST_F(TupleTest, VectorTupleHasExpectedY)
 {
-    EXPECT_NEAR(expectedY, aVector.yAxis(), delta);
+    EXPECT_NEAR(expectedY, aVector.y, delta);
 }
 TEST_F(TupleTest, VectorTupleHasExpectedZ)
 {
-    EXPECT_NEAR(expectedZ, aVector.zAxis(), delta);
+    EXPECT_NEAR(expectedZ, aVector.z, delta);
 }
 TEST_F(TupleTest, VectorTupleHasExpectedW)
 {
-    EXPECT_NEAR(wVector, aVector.wAxis(), delta);
+    EXPECT_NEAR(wVector, aVector.w, delta);
 }
 TEST_F(TupleTest, VectorTupleIsNotAPoint)
 {
@@ -80,14 +80,16 @@ TEST_F(TupleTest, VectorTupleIsAVector)
 TEST_F(TupleTest, PointCreatesAPoint)
 {
     raytracer::point p(expectedX, expectedY, expectedZ);
-    EXPECT_TRUE(p.isPoint());
-    EXPECT_NEAR(wPoint, p.wAxis(), delta);
+    raytracer::tuple t = p.getTuple();
+    EXPECT_TRUE(t.isPoint());
+    EXPECT_NEAR(wPoint, t.w, delta);
 }
 TEST_F(TupleTest, VectorCreatesAVector)
 {
     raytracer::vector v(expectedX, expectedY, expectedZ);
-    EXPECT_TRUE(v.isVector());
-    EXPECT_NEAR(wVector, v.wAxis(), delta);
+    raytracer::tuple t = v.getTuple();
+    EXPECT_TRUE(t.isVector());
+    EXPECT_NEAR(wVector, t.w, delta);
 }
 TEST_F(TupleTest, ComparingTupleToItselfYieldsEqual)
 {
