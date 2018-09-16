@@ -12,15 +12,51 @@ public:
     bool isVector();
 
     bool operator==(const tuple& rhs) const;
-    tuple* operator+(const tuple& rhs) const;
+    tuple operator+(const tuple& rhs) const;
 
-    tuple* operator-(const tuple& rhs) const;
+    tuple operator-(const tuple& rhs) const;
+    tuple operator-() const;
 
     float x, y, z, w;
 
 private:
     bool equal(const float a, const float b) const;
 };
+
+class vector;
+class point
+{
+public:
+    point(float xVal, float yVal, float zVal);
+
+    const tuple& getTuple() const;
+
+    bool operator==(const point& rhs) const;
+    vector operator-(const point &rhsPoint) const;
+    point operator-(const vector &rhsVector) const;
+
+
+private:
+    tuple innerTuple;
+
+};
+
+class vector
+{
+public:
+    vector(float xVal, float yVal, float zVal);
+
+    const tuple& getTuple() const;
+
+    bool operator==(const vector& rhs) const;
+    point operator-(const point &rhs) const;
+    vector operator-(const vector &rhs) const;
+
+private:
+    tuple innerTuple;
+
+};
+
 }
 
 #endif // TUPLE_H

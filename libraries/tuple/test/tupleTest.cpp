@@ -1,6 +1,4 @@
 #include "tuple.h"
-#include "point.h"
-#include "vector.h"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>

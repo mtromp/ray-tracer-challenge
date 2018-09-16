@@ -1,6 +1,4 @@
 #include "tuple.h"
-#include "point.h"
-#include "vector.h"
 
 #include <gtest/gtest.h>
 #include <gmock/gmock.h>
@@ -14,7 +12,7 @@ TEST(TupleMath, AddPointTupleToVectorTuple)
     raytracer::tuple a1(3, -2, 5, 1);
     raytracer::tuple a2(-2, 3, 1, 0);
 
-    EXPECT_TRUE(expected == *(a1 + a2));
+    EXPECT_TRUE(expected == (a1 + a2));
 }
 
 TEST(TupleMath, SubtractPointFromPointIsVector)
@@ -24,7 +22,7 @@ TEST(TupleMath, SubtractPointFromPointIsVector)
     raytracer::point p1(3, 2, 1);
     raytracer::point p2(5, 6, 7);
 
-    EXPECT_TRUE(expected == *(p1 - p2));
+    EXPECT_TRUE(expected == (p1 - p2));
 }
 
 TEST(TupleMath, SubtractVectorFromPointIsPoint)
@@ -34,7 +32,7 @@ TEST(TupleMath, SubtractVectorFromPointIsPoint)
     raytracer::vector v(5.0, 6.0, 7.0);
     raytracer::point p(3.0, 2.0, 1.0);
 
-    EXPECT_TRUE(expected == *(p - v));
+    EXPECT_TRUE(expected == (p - v));
 }
 
 TEST(TupleMath, SubtractVectorFromVectorIsVector)
@@ -44,5 +42,23 @@ TEST(TupleMath, SubtractVectorFromVectorIsVector)
     raytracer::vector v1(3, 2, 1);
     raytracer::vector v2(5, 6, 7);
 
-    EXPECT_TRUE(expected == *(v1 - v2));
+    EXPECT_TRUE(expected == (v1 - v2));
+}
+
+TEST(TupleMath, SubtractVectorFromZeroIsNegativeVector)
+{
+    raytracer::vector expected(-1, 2, -3);
+
+    raytracer::vector zero(0, 0, 0);
+    raytracer::vector v(1, -2, 3);
+
+    EXPECT_TRUE(expected == (zero - v));
+}
+
+TEST(TupleMath, NegateTuple)
+{
+    raytracer::tuple expected(-1, 2, -3, 4);
+    raytracer::tuple a(1, -2, 3, -4);
+
+    EXPECT_TRUE(expected == -a);
 }

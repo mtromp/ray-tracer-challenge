@@ -27,14 +27,19 @@ bool tuple::operator==(const tuple &rhs) const
             && equal(this->z,rhs.z);
 }
 
-tuple* tuple::operator+(const tuple &rhs) const
+tuple tuple::operator+(const tuple &rhs) const
 {
-    return new tuple(this->x + rhs.x, this->y + rhs.y, this->z + rhs.z, this->w + rhs.w);
+    return tuple(this->x + rhs.x, this->y + rhs.y, this->z + rhs.z, this->w + rhs.w);
 }
 
-tuple* tuple::operator-(const tuple& rhs) const
+tuple tuple::operator-(const tuple& rhs) const
 {
-    return new tuple(this->x - rhs.x, this->y - rhs.y, this->z - rhs.z, this->w - rhs.w);
+    return tuple(this->x - rhs.x, this->y - rhs.y, this->z - rhs.z, this->w - rhs.w);
+}
+
+tuple tuple::operator-() const
+{
+    return tuple(-this->x, -this->y, -this->z, -this->w);
 }
 
 bool tuple::equal(const float a, const float b) const
@@ -46,4 +51,68 @@ bool tuple::equal(const float a, const float b) const
     } else {
         return false;
     }
+}
+
+point::point(float xVal, float yVal, float zVal)
+            : innerTuple(xVal,yVal,zVal,1.0)
+{
+}
+
+const tuple& point::getTuple() const
+{
+    return innerTuple;
+}
+
+bool point::operator==(const point &rhs) const
+{
+    return (this->innerTuple == rhs.innerTuple);
+}
+
+vector point::operator-(const point& rhsPoint) const
+{
+    return vector(this->innerTuple.x - rhsPoint.innerTuple.x
+                      , this->innerTuple.y - rhsPoint.innerTuple.y
+                      , this->innerTuple.z - rhsPoint.innerTuple.z
+                     );
+}
+
+point point::operator-(const vector& rhsVector) const
+{
+    tuple tmp = rhsVector.getTuple();
+    return point(this->innerTuple.x - tmp.x
+                      , this->innerTuple.y - tmp.y
+                      , this->innerTuple.z - tmp.z
+                     );
+}
+
+vector::vector(float xVal, float yVal, float zVal) : innerTuple(xVal,yVal,zVal,0.0)
+{
+}
+
+const tuple& vector::getTuple() const
+{
+    return innerTuple;
+}
+
+bool vector::operator==(const vector &rhs) const
+{
+    return (this->innerTuple == rhs.innerTuple);
+}
+
+point vector::operator-(const point& rhs) const
+{
+    const tuple& tmp = rhs.getTuple();
+    return point(this->innerTuple.x - tmp.x
+                     , this->innerTuple.y - tmp.y
+                     , this->innerTuple.z - tmp.z
+                     );
+}
+
+vector vector::operator-(const vector& rhs) const
+{
+    const tuple& tmp = rhs.getTuple();
+    return vector(this->innerTuple.x - tmp.x
+                     , this->innerTuple.y - tmp.y
+                     , this->innerTuple.z - tmp.z
+                     );
 }
