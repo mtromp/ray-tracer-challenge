@@ -15,6 +15,7 @@ public:
 
     bool operator==(const vector& rhs) const;
     point* operator-(const point &rhs) const;
+    vector* operator-(const vector &rhs) const;
 
 private:
     tuple innerTuple;

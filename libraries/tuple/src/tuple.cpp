@@ -27,12 +27,12 @@ bool tuple::operator==(const tuple &rhs) const
             && equal(this->z,rhs.z);
 }
 
-tuple* tuple::operator+(const tuple &rhs)
+tuple* tuple::operator+(const tuple &rhs) const
 {
     return new tuple(this->x + rhs.x, this->y + rhs.y, this->z + rhs.z, this->w + rhs.w);
 }
 
-tuple* tuple::operator-(const tuple& rhs)
+tuple* tuple::operator-(const tuple& rhs) const
 {
     return new tuple(this->x - rhs.x, this->y - rhs.y, this->z - rhs.z, this->w - rhs.w);
 }

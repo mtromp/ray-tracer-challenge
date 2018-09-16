@@ -12,9 +12,9 @@ public:
     bool isVector();
 
     bool operator==(const tuple& rhs) const;
-    tuple* operator+(const tuple& rhs);
+    tuple* operator+(const tuple& rhs) const;
 
-    tuple* operator-(const tuple& rhs);
+    tuple* operator-(const tuple& rhs) const;
 
     float x, y, z, w;
 

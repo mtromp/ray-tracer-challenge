@@ -26,3 +26,12 @@ point* vector::operator-(const point& rhs) const
                      );
 }
 
+vector* vector::operator-(const vector& rhs) const
+{
+    const tuple& tmp = rhs.getTuple();
+    return new vector(this->innerTuple.x - tmp.x
+                     , this->innerTuple.y - tmp.y
+                     , this->innerTuple.z - tmp.z
+                     );
+}
+
