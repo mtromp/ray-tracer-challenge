@@ -29,7 +29,9 @@ ADD_EXECUTABLE( tupleTests
         test/main.cpp
         test/tupleTest.cpp
         test/tupleMathTest.cpp
+        test/vectorMathTest.cpp
 )
+
 TARGET_LINK_LIBRARIES( tupleTests
         tuple
         gmock

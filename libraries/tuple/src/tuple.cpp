@@ -126,3 +126,8 @@ vector vector::operator-(const vector& rhs) const
                      , this->innerTuple.z - tmp.z
                      );
 }
+
+float vector::magnitude() const
+{
+    return sqrt(pow(this->innerTuple.x,2) + pow(this->innerTuple.y,2) + pow(this->innerTuple.z,2));
+}

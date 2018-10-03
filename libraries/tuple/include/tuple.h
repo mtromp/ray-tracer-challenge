@@ -54,6 +54,8 @@ public:
     point operator-(const point &rhs) const;
     vector operator-(const vector &rhs) const;
 
+    float magnitude() const;
+
 private:
     tuple innerTuple;
 
