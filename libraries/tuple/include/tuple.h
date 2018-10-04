@@ -55,6 +55,7 @@ public:
     vector operator-(const vector &rhs) const;
 
     float magnitude() const;
+    vector normalize() const;
 
 private:
     tuple innerTuple;

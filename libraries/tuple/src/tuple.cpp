@@ -131,3 +131,12 @@ float vector::magnitude() const
 {
     return sqrt(pow(this->innerTuple.x,2) + pow(this->innerTuple.y,2) + pow(this->innerTuple.z,2));
 }
+
+vector vector::normalize() const
+{
+    float magnitude = this->magnitude();
+    return vector(this->innerTuple.x / magnitude,
+                  this->innerTuple.y / magnitude,
+                  this->innerTuple.z / magnitude
+                 );
+}
