@@ -140,3 +140,12 @@ vector vector::normalize() const
                   this->innerTuple.z / magnitude
                  );
 }
+
+float vector::dot(const vector& rhs) const
+{
+    float result =   this->innerTuple.x * rhs.innerTuple.x
+                   + this->innerTuple.y * rhs.innerTuple.y
+                   + this->innerTuple.z * rhs.innerTuple.z
+                   ;
+    return result;
+}

@@ -56,6 +56,7 @@ public:
 
     float magnitude() const;
     vector normalize() const;
+    float dot(const vector &rhs) const;
 
 private:
     tuple innerTuple;
