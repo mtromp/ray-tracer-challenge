@@ -99,3 +99,21 @@ TEST(VectorMath, DotProductResultsInScalar)
 
     EXPECT_EQ(expected, a.dot(b));
 }
+
+TEST(VectorMath, CrossProductResultsInVector)
+{
+    raytracer::vector expected(-1.0, 2.0, -1.0);
+
+    raytracer::vector a(1.0, 2.0, 3.0);
+    raytracer::vector b(2.0, 3.0, 4.0);
+    EXPECT_TRUE(expected == (a.cross(b)));
+}
+
+TEST(VectorMath, SwitchedCrossProductResultsInVector)
+{
+    raytracer::vector expected(1.0, -2.0, 1.0);
+
+    raytracer::vector a(1.0, 2.0, 3.0);
+    raytracer::vector b(2.0, 3.0, 4.0);
+    EXPECT_TRUE(expected == (b.cross(a)));
+}

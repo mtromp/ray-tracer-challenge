@@ -149,3 +149,18 @@ float vector::dot(const vector& rhs) const
                    ;
     return result;
 }
+
+vector vector::cross(const vector &rhs) const
+{
+    float a_x = this->innerTuple.x;
+    float a_y = this->innerTuple.y;
+    float a_z = this->innerTuple.z;
+    float b_x = rhs.innerTuple.x;
+    float b_y = rhs.innerTuple.y;
+    float b_z = rhs.innerTuple.z;
+
+    return vector( a_y*b_z - a_z*b_y
+                 , a_z*b_x - a_x*b_z
+                 , a_x*b_y - a_y*b_x
+                 );
+}
