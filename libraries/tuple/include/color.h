@@ -14,6 +14,8 @@ public:
     float getGreen() const;
     float getBlue() const;
 
+    color operator*(const color& rhs) const;
+    color operator*(float value) const;
 };
 } //namespace raytracer
 #endif // COLOR_H

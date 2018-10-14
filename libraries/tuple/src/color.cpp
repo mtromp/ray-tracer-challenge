@@ -21,3 +21,16 @@ float color::getBlue() const
 {
     return this->z;
 }
+
+color color::operator*(float value) const
+{
+    return color(this->x * value, this->y * value, this->z * value);
+}
+// hadamard product
+color color::operator*(const color& rhs) const
+{
+    return color(this->x * rhs.x
+                ,this->y * rhs.y
+                ,this->z * rhs.z
+                );
+}
