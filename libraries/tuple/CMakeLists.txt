@@ -8,11 +8,13 @@ INCLUDE_DIRECTORIES( ${INCLUDE_DIRS} )
 # ##########################################
 SET( INCLUDE_FILES
         include/tuple.h
+        include/color.h
 )
 
 # ##########################################
 SET( SOURCE_FILES
         src/tuple.cpp
+        src/color.cpp
 )
 
 # ##########################################
@@ -27,6 +29,7 @@ ADD_LIBRARY( tuple
 
 ADD_EXECUTABLE( tupleTests
         test/main.cpp
+        test/colorTest.cpp
         test/tupleTest.cpp
         test/tupleMathTest.cpp
         test/vectorMathTest.cpp
