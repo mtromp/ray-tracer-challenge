@@ -95,6 +95,15 @@ point point::operator-(const vector& rhsVector) const
                      );
 }
 
+point point::operator+(const vector& rhsVector) const
+{
+    tuple tmp = rhsVector.getTuple();
+    return point(this->innerTuple.x + tmp.x
+                      , this->innerTuple.y + tmp.y
+                      , this->innerTuple.z + tmp.z
+                     );
+}
+
 vector::vector(float xVal, float yVal, float zVal) : innerTuple(xVal,yVal,zVal,0.0)
 {
 }
@@ -124,6 +133,15 @@ vector vector::operator-(const vector& rhs) const
     return vector(this->innerTuple.x - tmp.x
                      , this->innerTuple.y - tmp.y
                      , this->innerTuple.z - tmp.z
+                     );
+}
+
+vector vector::operator+(const vector& rhs) const
+{
+    const tuple& tmp = rhs.getTuple();
+    return vector(this->innerTuple.x + tmp.x
+                     , this->innerTuple.y + tmp.y
+                     , this->innerTuple.z + tmp.z
                      );
 }
 

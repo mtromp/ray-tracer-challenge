@@ -34,3 +34,12 @@ INCLUDE( external/CMakeLists.txt )
 #   libraries are added
 INCLUDE( libraries/CMakeLists.txt )
 
+# ###############################################
+# Include the application CMakeLists.txt so that
+#   only that file need be modified when new
+#   application files are added
+
+INCLUDE( application/CMakeLists.txt )
+
+TARGET_INCLUDE_DIRECTORIES( tuple PUBLIC libraries/tuple/include)
+

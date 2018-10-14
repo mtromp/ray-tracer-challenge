@@ -36,6 +36,7 @@ public:
     bool operator==(const point& rhs) const;
     vector operator-(const point &rhsPoint) const;
     point operator-(const vector &rhsVector) const;
+    point operator+(const vector &rhsVector) const;
 
 
 private:
@@ -53,6 +54,7 @@ public:
     bool operator==(const vector& rhs) const;
     point operator-(const point &rhs) const;
     vector operator-(const vector &rhs) const;
+    vector operator+(const vector &rhs) const;
 
     float magnitude() const;
     vector normalize() const;

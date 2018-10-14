@@ -35,6 +35,16 @@ TEST(TupleMath, SubtractVectorFromPointIsPoint)
     EXPECT_TRUE(expected == (p - v));
 }
 
+TEST(TupleMath, AddVectorToPointIsPoint)
+{
+    raytracer::point expected(8.0, 8.0, 8.0);
+
+    raytracer::vector v(5.0, 6.0, 7.0);
+    raytracer::point p(3.0, 2.0, 1.0);
+
+    EXPECT_TRUE(expected == (p + v));
+}
+
 TEST(TupleMath, SubtractVectorFromVectorIsVector)
 {
     raytracer::vector expected(-2.0, -4.0, -6.0);
@@ -43,6 +53,16 @@ TEST(TupleMath, SubtractVectorFromVectorIsVector)
     raytracer::vector v2(5, 6, 7);
 
     EXPECT_TRUE(expected == (v1 - v2));
+}
+
+TEST(TupleMath, AddVectorToVectorIsVector)
+{
+    raytracer::vector expected(8.0, 8.0, 8.0);
+
+    raytracer::vector v1(3, 2, 1);
+    raytracer::vector v2(5, 6, 7);
+
+    EXPECT_TRUE(expected == (v1 + v2));
 }
 
 TEST(TupleMath, SubtractVectorFromZeroIsNegativeVector)
