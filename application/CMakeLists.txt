@@ -1,7 +1,14 @@
 # ##########################################
+add_executable(tickApplication "")
 
-ADD_EXECUTABLE( tickApplication
-    application/tick.cpp
-)
+target_sources(
+  tickApplication
+  PRIVATE
+    tick.cpp
+  )
 
-TARGET_LINK_LIBRARIES( tickApplication tuple )
+target_link_libraries(
+  tickApplication
+  PRIVATE
+    tuple
+  )

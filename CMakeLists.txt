@@ -1,21 +1,26 @@
 # ###############################################
 # Check for a valid version of CMake.
-CMAKE_MINIMUM_REQUIRED( VERSION 2.8.3 )
+cmake_minimum_required( VERSION 3.0 FATAL_ERROR )
+
+#[==[
+ 20181027: reworking with modern cmake conventions
+    Search for Daniel Pfeiffer's presentaions on
+    effective cmake.
+#]==]
 
 # ###############################################
 # Start the project.
-PROJECT( RayTracerChallenge )
+project( RayTracerChallenge )
 
 # ##########################################
 # get rid of policy CMP0042 warning on Mac
-SET ( CMAKE_MACOSX_RPATH 1 )
+set ( CMAKE_MACOSX_RPATH 1 )
 
 # ###############################################
 # Find the threading package for this machine.
 # Needed by gtest
-FIND_PACKAGE( Threads )
+find_package( Threads )
 
-enable_testing()
 ### Would like let cmake know were gtest is located
 ###   apparently that will allow ctest to run
 ###   tests that have been ADD_TEST defined.
@@ -25,21 +30,23 @@ enable_testing()
 # Include the external CMakeLists.txt so that
 #   only that file need be modified when new
 #   external tools are added
-INCLUDE( external/CMakeLists.txt )
+include( external/CMakeLists.txt )
 
 
 # ###############################################
 # Include the libraries CMakeLists.txt so that
 #   only that file need be modified when new
 #   libraries are added
-INCLUDE( libraries/CMakeLists.txt )
+add_subdirectory( libraries )
 
 # ###############################################
 # Include the application CMakeLists.txt so that
 #   only that file need be modified when new
 #   application files are added
 
-INCLUDE( application/CMakeLists.txt )
+add_subdirectory( application )
 
-TARGET_INCLUDE_DIRECTORIES( tuple PUBLIC libraries/tuple/include)
+enable_testing()
+
+add_subdirectory( test )
 
