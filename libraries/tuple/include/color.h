@@ -8,6 +8,7 @@ namespace raytracer
 class color : public raytracer::tuple
 {
 public:
+    color();
     color(float red, float green, float blue);
 
     float getRed() const;

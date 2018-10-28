@@ -1,6 +1,7 @@
 add_executable( libraryTests "" )
 
 add_subdirectory( tuple )
+add_subdirectory( canvas )
 
 target_sources(
     libraryTests
@@ -11,6 +12,8 @@ target_sources(
 target_link_libraries(
     libraryTests
     PRIVATE
+        canvas
+        canvasTests
         tuple
         tupleTests
         gmock

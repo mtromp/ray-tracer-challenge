@@ -18,5 +18,3 @@ target_link_libraries(
         tuple
         gmock
     )
-
-

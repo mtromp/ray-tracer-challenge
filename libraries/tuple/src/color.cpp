@@ -2,6 +2,9 @@
 
 using namespace raytracer;
 
+color::color() : tuple(0.0, 0.0, 0.0, 0.0)
+{}
+
 color::color(float red, float green, float blue) : tuple(red, green, blue, 0.0)
 {
 
