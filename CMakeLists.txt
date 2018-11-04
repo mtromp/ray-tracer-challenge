@@ -16,6 +16,9 @@ project( RayTracerChallenge )
 # get rid of policy CMP0042 warning on Mac
 set ( CMAKE_MACOSX_RPATH 1 )
 
+# enable the C++ 17 std libraries
+set (CMAKE_CXX_FLAGS "-std=c++1z")
+
 # ###############################################
 # Find the threading package for this machine.
 # Needed by gtest

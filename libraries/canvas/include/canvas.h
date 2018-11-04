@@ -3,6 +3,8 @@
 
 #include "color.h"
 
+#include <string>
+
 namespace raytracer {
 
 class canvas
@@ -11,7 +13,9 @@ public:
     canvas(int width, int height);
     int getWidth();
     int getHeight();
-    color getColor(int x, int y);
+    color getColor(int x, int y) const;
+    void setColor(int x, int y, color value);
+    std::string writePpm() const;
 
 private:
     int width;
