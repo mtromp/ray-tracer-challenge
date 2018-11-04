@@ -5,6 +5,7 @@
 #include <gmock/gmock.h>
 
 #include <sstream>
+#include <string>
 
 using namespace testing;
 
@@ -129,4 +130,12 @@ TEST(CanvasPPMTest, LongRowsMatchWrapAsExpected)
     EXPECT_EQ("153 255 204 153 255 204 153 255 204 153 255 204 153", row2);
     EXPECT_EQ("255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204", row3);
     EXPECT_EQ("153 255 204 153 255 204 153 255 204 153 255 204 153", row4);
+}
+
+TEST(CanvasPPMTest, LastCharacterIsNewLine)
+{
+    raytracer::canvas c(5,3);
+    std::string ppm = c.writePpm();
+
+    EXPECT_EQ('\n', ppm.at(ppm.length()-1));
 }
