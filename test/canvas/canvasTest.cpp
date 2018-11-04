@@ -92,8 +92,41 @@ TEST(CanvasPPMTest, DataRowsMatchExpected)
     std::getline(strStream, row2);
     std::getline(strStream, row3);
 
-    EXPECT_EQ("255 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ", row1);
-    EXPECT_EQ("0 0 0 0 0 0 0 128 0 0 0 0 0 0 0 ", row2);
-    EXPECT_EQ("0 0 0 0 0 0 0 0 0 0 0 0 0 0 255 ", row3);
+    EXPECT_EQ("255 0 0 0 0 0 0 0 0 0 0 0 0 0 0", row1);
+    EXPECT_EQ("0 0 0 0 0 0 0 128 0 0 0 0 0 0 0", row2);
+    EXPECT_EQ("0 0 0 0 0 0 0 0 0 0 0 0 0 0 255", row3);
 
+}
+TEST(CanvasPPMTest, LongRowsMatchWrapAsExpected)
+{
+    raytracer::canvas c(10,2);
+    raytracer::color c1(1, 0.8, 0.6);
+    for (int i=0; i<10;++i)
+    {
+        for(int j=0; j<2; ++j)
+        {
+            c.setColor(i,j,c1);
+        }
+    }
+
+    std::string row1, row2, row3, row4;
+
+    std::string ppm = c.writePpm();
+    std::istringstream strStream(ppm);
+    // Skip the header
+    std::string header;
+
+    for (int i = 0; i < 3; ++i)
+    {
+        std::getline(strStream, header);
+    }
+    std::getline(strStream, row1);
+    std::getline(strStream, row2);
+    std::getline(strStream, row3);
+    std::getline(strStream, row4);
+
+    EXPECT_EQ("255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204", row1);
+    EXPECT_EQ("153 255 204 153 255 204 153 255 204 153 255 204 153", row2);
+    EXPECT_EQ("255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204", row3);
+    EXPECT_EQ("153 255 204 153 255 204 153 255 204 153 255 204 153", row4);
 }
