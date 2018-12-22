@@ -6,6 +6,10 @@ After starting to set up my Mac with cucumber-cpp, I decided against it. The dep
 familiarity with gtest/gmock, prompted me to get going with gtest/gmock. Maybe in the future I'll retry this project with Cucumber.
 For now (20180901) I just want to get started with the project.
 
+## CXX FLAGS
+I needed to add `set (CMAKE_CXX_FLAGS "-std=c++1z")` so that the inclusion of algorithms would be for C++ 17. I wanted to use the clamp
+function which is not available in the default std library.
+
 ## Old comments
 
 *Pre-September 1, 2018*
