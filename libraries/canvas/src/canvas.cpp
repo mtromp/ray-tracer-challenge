@@ -14,8 +14,18 @@ canvas::canvas(int width, int height) : width(width), height(height)
     }
 }
 
+canvas::~canvas()
+{
+    for (int i=0; i<this->width; ++i)
+    {
+        delete [] this->canvasColors[i];
+    }
+    delete [] this->canvasColors;
+}
+
 int canvas::getWidth()
 {
+
     return this->width;
 }
 

@@ -55,6 +55,7 @@ public:
     point operator-(const point &rhs) const;
     vector operator-(const vector &rhs) const;
     vector operator+(const vector &rhs) const;
+    vector operator*(const float rhs);
 
     float magnitude() const;
     vector normalize() const;

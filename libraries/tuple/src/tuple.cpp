@@ -145,6 +145,14 @@ vector vector::operator+(const vector& rhs) const
                      );
 }
 
+vector vector::operator*(const float rhs)
+{
+    return vector(this->innerTuple.x * rhs
+                  , this->innerTuple.y * rhs
+                  , this->innerTuple.z * rhs
+                  );
+}
+
 float vector::magnitude() const
 {
     return sqrt(pow(this->innerTuple.x,2) + pow(this->innerTuple.y,2) + pow(this->innerTuple.z,2));

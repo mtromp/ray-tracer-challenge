@@ -110,6 +110,17 @@ TEST(TupleMath, DivideTupleByScalar)
     EXPECT_TRUE(expected == (a / 2.0));
 }
 
+TEST(VectorMath, MultipleVectorByScalar)
+{
+    float scalar = 2.0;
+
+    raytracer::vector a(1.0, 2.0, 3.0);
+    raytracer::vector expected(2.0, 4.0, 6.0);
+
+    EXPECT_TRUE(expected == a * scalar);
+}
+
+
 TEST(VectorMath, DotProductResultsInScalar)
 {
     float expected = 20.0;
