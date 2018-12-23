@@ -10,6 +10,12 @@ For now (20180901) I just want to get started with the project.
 I needed to add `set (CMAKE_CXX_FLAGS "-std=c++1z")` so that the inclusion of algorithms would be for C++ 17. I wanted to use the clamp
 function which is not available in the default std library.
 
+## valgrind
+I would like to use valgrind because I believe that I have some memory issues.
+Since I have upgraded to Mac OS Mojave, valgrind will not build. My QTCreator needs
+an external tool for memory checking.
+
+
 ## Old comments
 
 *Pre-September 1, 2018*

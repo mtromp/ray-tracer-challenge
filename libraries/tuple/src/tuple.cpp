@@ -6,7 +6,21 @@ using namespace raytracer;
 
 tuple::tuple(float xVal, float yVal, float zVal, float wVal) : x(xVal), y(yVal),z(zVal),w(wVal)
 {
+}
 
+tuple::tuple(const tuple& oldTuple): x(oldTuple.x)
+                                   , y(oldTuple.y)
+                                   , z(oldTuple.z)
+                                   , w(oldTuple.w)
+{
+}
+
+void tuple::operator=(const tuple& rhs)
+{
+    this->x = rhs.x;
+    this->y = rhs.y;
+    this->z = rhs.z;
+    this->w = rhs.w;
 }
 
 bool tuple::isPoint()
@@ -68,7 +82,7 @@ point::point(float xVal, float yVal, float zVal)
 {
 }
 
-const tuple& point::getTuple() const
+const tuple point::getTuple() const
 {
     return innerTuple;
 }
@@ -108,7 +122,7 @@ vector::vector(float xVal, float yVal, float zVal) : innerTuple(xVal,yVal,zVal,0
 {
 }
 
-const tuple& vector::getTuple() const
+const tuple vector::getTuple() const
 {
     return innerTuple;
 }
