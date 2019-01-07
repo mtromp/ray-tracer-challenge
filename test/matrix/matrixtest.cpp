@@ -116,10 +116,10 @@ private:
 
 };
 
-
 TEST_F(MatrixTest, Initialize4by4Matrix)
 {
     raytracer::matrix actualMatrix(this->expected4by4, this->expected4Size);
 
     EXPECT_EQ(1.0, actualMatrix.getValue(0,0));
+    EXPECT_EQ(6.5, actualMatrix.getValue(1,1));
 }
