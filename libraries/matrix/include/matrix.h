@@ -11,6 +11,7 @@ public:
     ~matrix();
 
     float getValue(int i, int j) const;
+    int getSize() const;
 
 
 private:

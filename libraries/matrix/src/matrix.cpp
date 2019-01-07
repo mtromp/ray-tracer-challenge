@@ -50,3 +50,8 @@ float matrix::getValue(int i, int j) const
 {
     return this->theMatrix[i][j];
 }
+
+int matrix::getSize() const
+{
+    return this->size;
+}

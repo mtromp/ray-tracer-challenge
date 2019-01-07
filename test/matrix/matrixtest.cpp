@@ -123,3 +123,34 @@ TEST_F(MatrixTest, Initialize4by4Matrix)
     EXPECT_EQ(1.0, actualMatrix.getValue(0,0));
     EXPECT_EQ(6.5, actualMatrix.getValue(1,1));
 }
+
+TEST_F(MatrixTest, Initialize2by2Matrix)
+{
+    raytracer::matrix actualMatrix(this->expected2by2, this->expected2Size);
+
+    EXPECT_EQ(-3.0, actualMatrix.getValue(0,0));
+    EXPECT_EQ(-2.0, actualMatrix.getValue(1,1));
+}
+
+TEST_F(MatrixTest, Initialize3by3Matrix)
+{
+    raytracer::matrix actualMatrix(this->expected3by3, this->expected3Size);
+
+    EXPECT_EQ(5.0, actualMatrix.getValue(0,1));
+    EXPECT_EQ(7.0, actualMatrix.getValue(1,2));
+}
+
+TEST_F(MatrixTest, SizeOf3by3MatrixIs3)
+{
+    raytracer::matrix actualMatrix(this->expected3by3, this->expected3Size);
+
+    EXPECT_EQ(this->expected3Size, actualMatrix.getSize());
+
+}
+TEST_F(MatrixTest, SizeOf2by2MatrixIs2)
+{
+    raytracer::matrix actualMatrix(this->expected2by2, this->expected2Size);
+
+    EXPECT_EQ(this->expected2Size, actualMatrix.getSize());
+
+}
