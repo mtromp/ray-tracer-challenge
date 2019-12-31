@@ -154,3 +154,9 @@ TEST_F(MatrixTest, SizeOf2by2MatrixIs2)
     EXPECT_EQ(this->expected2Size, actualMatrix.getSize());
 
 }
+TEST_F(MatrixTest, MatrixIsEqualWhenSameSizeAndValuesAreCompared)
+{
+    raytracer::matrix actualMatrix(this->expected4by4, this->expected4Size);
+    raytracer::matrix otherMatrix(this->expected4by4, this->expected4Size);
+    EXPECT_TRUE(actualMatrix == otherMatrix);
+}

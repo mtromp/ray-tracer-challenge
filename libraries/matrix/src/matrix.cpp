@@ -55,3 +55,11 @@ int matrix::getSize() const
 {
     return this->size;
 }
+
+bool matrix::operator ==(const matrix& rhs) const
+{
+    bool returnValue = false;
+
+
+    return returnValue;
+}

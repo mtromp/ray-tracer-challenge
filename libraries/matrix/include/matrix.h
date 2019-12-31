@@ -12,6 +12,7 @@ public:
 
     float getValue(int i, int j) const;
     int getSize() const;
+    bool operator==(const matrix& rhs) const;
 
 
 private:
