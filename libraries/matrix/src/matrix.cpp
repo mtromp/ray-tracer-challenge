@@ -1,5 +1,7 @@
 #include "matrix.h"
 
+#include <cmath>
+
 using namespace raytracer;
 
 matrix::matrix(int size) : size(size)
@@ -58,8 +60,33 @@ int matrix::getSize() const
 
 bool matrix::operator ==(const matrix& rhs) const
 {
-    bool returnValue = false;
-
+    bool returnValue = true;
+    if (this->size != rhs.getSize())
+    {
+        returnValue = false;
+    } else {
+        for (int i=0; i < this->size; ++i)
+        {
+            for (int j=0; j < this->size; ++j)
+            {
+                if (! equal(this->theMatrix[i][j], rhs.getValue(i,j)))
+                {
+                    returnValue = false;
+                }
+            }
+        }
+    }
 
     return returnValue;
+}
+
+bool matrix::equal(const float a, const float b) const
+{
+    const float epsilon = 0.00001;
+    if ( abs(a - b) < epsilon)
+    {
+        return true;
+    } else {
+        return false;
+    }
 }

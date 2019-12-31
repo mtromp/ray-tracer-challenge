@@ -18,6 +18,8 @@ public:
 private:
     int size;
     float **theMatrix;
+
+    bool equal(const float a, const float b) const;
 };
 
 }

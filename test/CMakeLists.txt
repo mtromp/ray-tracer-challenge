@@ -17,6 +17,7 @@ target_link_libraries(
         canvasTests
         tuple
         tupleTests
+        matrix
         matrixTests
         gmock
     )

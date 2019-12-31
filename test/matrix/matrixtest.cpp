@@ -5,27 +5,17 @@
 
 using namespace testing;
 
-float matrix4by4[4][4] =
-{
-    { 1.0,  2.0,  3.0,  4.0},
-    { 5.5,  6.5,  7.5,  8.5},
-    { 9.0, 10.0, 11.0, 12.0},
-    {13.5, 14.5, 15.5, 16.5}
-};
+float matrix4by4[16] = { 1.0,  2.0,  3.0,  4.0,
+                         5.5,  6.5,  7.5,  8.5,
+                         9.0, 10.0, 11.0, 12.0,
+                        13.5, 14.5, 15.5, 16.5};
 
-float matrix2by2[2][2] =
-{
-    {-3.0, 5.0},
-    { 1.0,-2.0}
-};
+float matrix2by2[4] = {-3.0, 5.0,
+                        1.0,-2.0};
 
-float matrix3by3[3][3] =
-{
-    {-3.0, 5.0, 0.0},
-    { 1.0,-2.0, 7.0},
-    { 0.0, 1.0, 1.0}
-};
-
+float matrix3by3[9] = {-3.0, 5.0, 0.0,
+                        1.0,-2.0, 7.0,
+                        0.0, 1.0, 1.0};
 
 class MatrixTest : public Test
 {
@@ -45,6 +35,22 @@ protected:
         delete3by3();
         delete4by4();
     }
+    float ** createArray(int theSize)
+    {
+        return new float*[theSize];
+    }
+
+    void initMatrix(float** theArray, float* theInitMatrix, const int theSize)
+    {
+        for (int i=0; i< theSize; ++i)
+        {
+            theArray[i] = new float[theSize];
+            for (int j=0; j < theSize; ++j)
+            {
+                theArray[i][j] = theInitMatrix[i*theSize + j];
+            }
+        }
+    }
 
     int expected2Size, expected3Size, expected4Size;
 
@@ -55,39 +61,18 @@ protected:
 private:
     void init2by2()
     {
-        this->expected2by2 = new float*[this->expected2Size];
-        for (int i=0; i< this->expected2Size; ++i)
-        {
-            this->expected2by2[i] = new float[this->expected2Size];
-            for (int j=0; j < this->expected2Size; ++j)
-            {
-                this->expected2by2[i][j] = matrix2by2[i][j];
-            }
-        }
+        this->expected2by2 = createArray(this->expected2Size);
+        initMatrix(this->expected2by2, matrix2by2, this->expected2Size);
     }
     void init3by3()
     {
-        this->expected3by3 = new float*[this->expected3Size];
-        for (int i=0; i< this->expected3Size; ++i)
-        {
-            this->expected3by3[i] = new float[this->expected3Size];
-            for (int j=0; j < this->expected3Size; ++j)
-            {
-                this->expected3by3[i][j] = matrix3by3[i][j];
-            }
-        }
+        this->expected3by3 = createArray(this->expected3Size);
+        initMatrix(this->expected3by3, matrix3by3, this->expected3Size);
     }
     void init4by4()
     {
-        this->expected4by4 = new float*[this->expected4Size];
-        for (int i=0; i< this->expected4Size; ++i)
-        {
-            this->expected4by4[i] = new float[this->expected4Size];
-            for (int j=0; j < this->expected4Size; ++j)
-            {
-                this->expected4by4[i][j] = matrix4by4[i][j];
-            }
-        }
+        this->expected4by4 = createArray(this->expected4Size);
+        initMatrix(this->expected4by4, matrix4by4, this->expected4Size);
     }
     void delete2by2()
     {
@@ -113,7 +98,6 @@ private:
         }
         delete this->expected4by4;
     }
-
 };
 
 TEST_F(MatrixTest, Initialize4by4Matrix)
@@ -159,4 +143,24 @@ TEST_F(MatrixTest, MatrixIsEqualWhenSameSizeAndValuesAreCompared)
     raytracer::matrix actualMatrix(this->expected4by4, this->expected4Size);
     raytracer::matrix otherMatrix(this->expected4by4, this->expected4Size);
     EXPECT_TRUE(actualMatrix == otherMatrix);
+}
+TEST_F(MatrixTest, MatrixIsNotEqualWhenDifferentSizeMatricesAreCompared)
+{
+    raytracer::matrix actualMatrix(this->expected4by4, this->expected4Size);
+    raytracer::matrix otherMatrix(this->expected3by3, this->expected3Size);
+    EXPECT_FALSE(actualMatrix == otherMatrix);
+}
+TEST_F(MatrixTest, MatrixIsNotEqualWhenContentMatricesAreCompared)
+{
+    float other[16] = { 1.0,  2.0,  3.0,  5.0,
+                        5.5,  6.5,  7.5,  8.5,
+                        9.0, 10.0, 11.0, 12.0,
+                       13.5, 14.5, 15.5, 16.5};
+    float** other4by4 = createArray(this->expected4Size);
+    initMatrix(other4by4, other, this->expected4Size);
+
+    raytracer::matrix otherMatrix(other4by4, this->expected4Size);
+    raytracer::matrix actualMatrix(this->expected4by4, this->expected4Size);
+
+    EXPECT_FALSE(actualMatrix == otherMatrix);
 }

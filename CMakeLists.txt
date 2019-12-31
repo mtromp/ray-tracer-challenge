@@ -35,6 +35,8 @@ find_package( Threads )
 #   external tools are added
 include( external/CMakeLists.txt )
 
+include(GoogleTest)
+
 
 # ###############################################
 # Include the libraries CMakeLists.txt so that
